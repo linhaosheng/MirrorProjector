@@ -1,4 +1,4 @@
-package com.mirroproject
+package com.mirroproject.activity
 
 import android.app.Activity
 import android.content.pm.ActivityInfo

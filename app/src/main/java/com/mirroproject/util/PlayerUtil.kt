@@ -1,6 +1,7 @@
 package com.mirroproject.util
 
 import android.content.Context
+import android.content.Context.AUDIO_SERVICE
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.net.Uri
@@ -10,6 +11,8 @@ import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.SeekBar
+import com.mirroproject.app.MirrorApplication
+import com.mirroproject.entity.EventType
 import org.greenrobot.eventbus.EventBus
 import java.util.*
 
@@ -23,7 +26,7 @@ class PlayerUtil : MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompleti
     var videoHeight: Int = 0
     lateinit var mediaPlayer: MediaPlayer
     lateinit var surfaceHolder: SurfaceHolder
-    internal var skbProgress: SeekBar
+    internal var skbProgress: SeekBar? = null
     private val mTimer = Timer()
     val TAG = "mediaPlayer"
     var cacheProgress = 0
@@ -34,7 +37,7 @@ class PlayerUtil : MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompleti
     private val SET_VIDEO_LAYOUT = 1
 
 
-    fun PlayerUtil(context: Context, surfaceView: SurfaceView, skbProgress: SeekBar): ??? {
+    constructor(context: Context, surfaceView: SurfaceView, skbProgress: SeekBar) {
         this.context = context
         this.skbProgress = skbProgress
         waitDialogUtil = WaitDialogVideoUtil(context)
@@ -50,7 +53,7 @@ class PlayerUtil : MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompleti
             if (mediaPlayer == null) {
                 return
             }
-            if (mediaPlayer!!.isPlaying && skbProgress.isPressed == false) {
+            if (mediaPlayer!!.isPlaying && skbProgress!!.isPressed == false) {
                 handleProgress.sendEmptyMessage(UPDATE_PROGRESS)
             }
         }
@@ -65,8 +68,8 @@ class PlayerUtil : MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompleti
                     val position = mediaPlayer!!.currentPosition
                     val duration = mediaPlayer!!.duration
                     if (duration > 0) {
-                        val pos = (skbProgress.max * position / duration).toLong()
-                        skbProgress.progress = pos.toInt()
+                        val pos = (skbProgress!!.max * position / duration).toLong()
+                        skbProgress!!.progress = pos.toInt()
                         if (!isLoaclVideo) {
                             updateDialog(pos)
                         }
@@ -141,14 +144,14 @@ class PlayerUtil : MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompleti
     fun closeSound() {
         if (mediaPlayer != null) {
             //mediaPlayer.setVolume(0, 0);
-            val audioManager = MirrorApplication.getInstance().getContext().getSystemService(AUDIO_SERVICE) as AudioManager
+            val audioManager = MirrorApplication.getInstance().getContext()!!.getSystemService(AUDIO_SERVICE) as AudioManager
             audioManager.setStreamMute(AudioManager.STREAM_MUSIC, true)
         }
     }
 
     fun openSound() {
         if (mediaPlayer != null) {
-            val audioManager = MirrorApplication.getInstance().getContext().getSystemService(AUDIO_SERVICE) as AudioManager
+            val audioManager = MirrorApplication.getInstance().getContext()!!.getSystemService(AUDIO_SERVICE) as AudioManager
             audioManager.setStreamMute(AudioManager.STREAM_MUSIC, false)
             /* mediaPlayer.setAudioStreamType(AudioManager.STREAM_SYSTEM);
             mediaPlayer.setVolume(audioManager.getStreamVolume(AudioManager.STREAM_SYSTEM), audioManager.getStreamVolume(AudioManager.STREAM_SYSTEM));*/
@@ -207,14 +210,12 @@ class PlayerUtil : MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompleti
                 }
                 mediaPlayer!!.stop()
                 mediaPlayer!!.release()
-                mediaPlayer = null
             }
 
         } catch (e: Exception) {
             e.printStackTrace()
             mediaPlayer!!.stop()
             mediaPlayer!!.release()
-            mediaPlayer = null
         }
 
     }
@@ -257,7 +258,7 @@ class PlayerUtil : MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompleti
         Log.e("mediaPlayer", "onPrepared")
     }
 
-    fun getMediaPlayer(): MediaPlayer? {
+    fun getMediaPlayer1(): MediaPlayer? {
         return mediaPlayer
     }
 
@@ -268,7 +269,7 @@ class PlayerUtil : MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompleti
 
 
     override fun onBufferingUpdate(arg0: MediaPlayer, bufferingProgress: Int) {
-        skbProgress.secondaryProgress = bufferingProgress
+        skbProgress!!.secondaryProgress = bufferingProgress
         val duration = mediaPlayer!!.duration
         cacheProgress = duration * bufferingProgress / 100
     }

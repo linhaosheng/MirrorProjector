@@ -1,4 +1,4 @@
-<com.mirror.view.recycleview.SWFrameLayout
+<com.mirroproject.view.recycleview.SWFrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scfragment"
     android:layout_width="match_parent"
@@ -43,4 +43,4 @@
     </LinearLayout>
 
 
-</com.mirror.view.recycleview.SWFrameLayout>
+</com.mirroproject.view.recycleview.SWFrameLayout>

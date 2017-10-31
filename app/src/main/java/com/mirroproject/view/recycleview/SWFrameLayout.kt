@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
+import com.mirroproject.R
 
 /**
  * Created by reeman on 2017/10/31.

@@ -1,4 +1,4 @@
-package com.mirroproject.util
+package com.mirroproject.view
 
 import android.app.Dialog
 import android.content.Context
@@ -11,27 +11,22 @@ import com.mirroproject.R
 /**
  * Created by reeman on 2017/10/31.
  */
-class WaitDialogVideoUtil {
-
-    lateinit var waitDialog: Dialog
-    lateinit var context: Context
-    val TAG = WaitDialogVideoUtil::class.java.name
-    lateinit var mTv: TextView
+class WaitDialogUtil {
+    internal var waitDialog: Dialog? = null
+    val TAG = WaitDialogUtil::class.java.name
+    internal var mTv: TextView
+    internal var context: Context
 
     constructor(context: Context) {
         this.context = context
         waitDialog = Dialog(context, R.style.MyDialog)
-        val recdialog = View.inflate(context, R.layout.dialog_wait_video, null)
+        val recdialog = View.inflate(context, R.layout.dialog_wait, null)
         mTv = recdialog.findViewById<View>(R.id.tv_dialog_wait) as TextView
         waitDialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
         waitDialog!!.setContentView(recdialog)
         waitDialog!!.setCanceledOnTouchOutside(false)
         waitDialog!!.setCancelable(true)
-        val manager = waitDialog!!.window
-        manager!!.setGravity(Gravity.LEFT)
-        val attributes = manager.attributes
-        attributes.x = 400
-        manager.attributes = attributes
+        waitDialog!!.window!!.setGravity(Gravity.CENTER)
     }
 
 

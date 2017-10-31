@@ -15,7 +15,7 @@ import java.lang.reflect.InvocationTargetException
 /**
  * Created by reeman on 2017/10/31.
  */
-class SWRecyclerView(context: Context) : RecyclerView(context) {
+class SWRecyclerView: RecyclerView {
 
     private val TAG = SWRecyclerView::class.java.simpleName
     private var mSelectedItemCentered = true
@@ -25,13 +25,10 @@ class SWRecyclerView(context: Context) : RecyclerView(context) {
     private var mDuration = 0
 
 
-    constructor(context: Context, attrs: AttributeSet) : this(context) {
+    constructor(context: Context) : super(context) {}
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {}
 
-    }
-
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : this(context, attrs) {
-
-    }
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {}
 
 
     override fun requestChildFocus(child: View?, focused: View) {

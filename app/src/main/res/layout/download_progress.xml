@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp">
 
-        <com.mirror.util.down.view.RopeProgressBar
+        <com.mirroproject.view.RopeProgressBar
             android:id="@+id/update_progress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

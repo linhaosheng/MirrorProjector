@@ -1,8 +1,7 @@
-package com.mirroproject.splash
+package com.mirroproject.activity.splash
 
-import android.app.Activity
 import android.os.Bundle
-import com.mirroproject.BaseActivity
+import com.mirroproject.activity.BaseActivity
 import com.mirroproject.R
 
 /**

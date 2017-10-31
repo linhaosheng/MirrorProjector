@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:background="#A46CC7">
 
-        <com.mirror.view.ad.BaseViewPager
+        <com.mirroproject.view.ad.BaseViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
