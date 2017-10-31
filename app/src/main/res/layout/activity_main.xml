@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2.5"
+        android:background="@mipmap/main_bgg">
+
+        <!-- ==============标题栏===============-->
+        <LinearLayout
+            android:id="@+id/lin_title"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="157dp"
+                android:layout_height="58dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:src="@mipmap/main_title_icon" />
+
+            <ImageView
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:src="@mipmap/main_er_code" />
+
+            <TextView
+                android:id="@+id/tv_title_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dimen_30"
+                android:text="当前显示"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/device_er_code"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="30dp"
+                android:src="@mipmap/main_er_code" />
+        </LinearLayout>
+
+        <!--===============中间碎片布局===================-->
+
+        <FrameLayout
+            android:id="@+id/frame_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lin_title"
+            android:layout_marginTop="20dp"
+            android:descendantFocusability="afterDescendants"
+            android:nextFocusDown="@+id/grid_menu_main" />
+
+
+        <!--================== 跑马灯特效=================-->
+        <com.mirror.view.MarqueeView
+            android:id="@+id/tv_mv_notice"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/lin_bottom_layout"
+            app:direction="left"
+            app:isRepeat="true"
+            app:speedView="175"
+            app:startPoint="end"
+            app:textSize="22sp"
+            app:textcolor="@color/white" />
+
+        <!--===============底部菜单===================-->
+        <LinearLayout
+            android:id="@+id/lin_bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_alignParentBottom="true"
+            android:background="#A46CC7"
+            android:orientation="horizontal"
+            android:padding="3dp">
+
+            <GridView
+                android:id="@+id/grid_menu_main"
+                android:layout_width="0dp"
+                android:layout_height="175dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4.0"
+                android:focusable="true"
+                android:listSelector="@color/transparent"
+                android:nextFocusRight="@+id/rela_db_hair"
+                android:nextFocusUp="@id/frame_content"
+                android:numColumns="4" />
+
+            <RelativeLayout
+                android:id="@+id/rela_db_hair"
+                android:layout_width="175dp"
+                android:layout_height="175dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/rela_hair_style"
+                android:focusable="true"
+                android:nextFocusLeft="@id/grid_menu_main"
+                android:nextFocusUp="@id/frame_content">
+
+                <ImageView
+                    android:layout_width="168dp"
+                    android:layout_height="168dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/main_icon_db_hair" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:background="#A46CC7"
+        android:padding="@dimen/dimen_5">
+
+        <fragment
+            android:id="@+id/fragment_cycle_viewpager_content"
+            android:name="com.mirror.view.ad.CycleViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false" />
+    </LinearLayout>
+
+</LinearLayout>

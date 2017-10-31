@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--跑马灯自定义View-->
+    <declare-styleable name="MarqueeText">
+        <attr name="speed" format="integer" />
+        <attr name="type">
+            <enum name="left_out" value="1" />
+            <enum name="right_out" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="RopeProgressBar">
+        <attr name="ropeMax" format="integer" />
+        <attr name="ropeProgress" format="integer" />
+        <attr name="ropePrimaryColor" format="color" />
+        <attr name="ropeSecondaryColor" format="color" />
+        <attr name="ropeSlack" format="dimension" />
+        <attr name="ropeStrokeWidth" format="dimension" />
+        <attr name="ropeDynamicLayout" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="MarqueeView">
+        <attr name="textcolor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="isRepeat" format="boolean" />
+        <attr name="speedView" format="integer" />
+        <attr name="startPoint" format="integer">
+            <enum name="start" value="0" />
+            <enum name="end" value="1" />
+        </attr>
+        <attr name="direction" format="integer">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="MarqueeViewStyle">
+        <attr name="mvInterval" format="integer|reference"/>
+        <attr name="mvAnimDuration" format="integer|reference"/>
+        <attr name="mvTextSize" format="dimension|reference"/>
+        <attr name="mvTextColor" format="color|reference"/>
+        <attr name="mvSingleLine" format="boolean"/>
+        <attr name="mvGravity">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+        <attr name="mvDirection">
+            <enum name="bottom_to_top" value="0"/>
+            <enum name="top_to_bottom" value="1"/>
+            <enum name="right_to_left" value="2"/>
+            <enum name="left_to_right" value="3"/>
+        </attr>
+    </declare-styleable>
+</resources>

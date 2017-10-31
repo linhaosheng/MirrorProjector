@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_50">
+
+        <!--软件升级-->
+        <LinearLayout
+            android:id="@+id/lin_soft_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/update_text"
+                    android:text="软件版本号 :  " />
+
+                <TextView
+                    android:id="@+id/tv_current_local_code"
+                    style="@style/update_text_desc" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/update_text"
+                    android:text="服务器版本号 :  " />
+
+                <TextView
+                    android:id="@+id/tv_local_web_code"
+                    style="@style/update_text_desc" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/update_text"
+                    android:text="版本号描述 :  " />
+
+                <TextView
+                    android:id="@+id/tv_local_web_desc"
+                    style="@style/update_text_desc" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_update_app"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_fouces_style"
+                android:text="软件升级"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_25" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/tv_down_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="下载状态"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/dimen_20" />
+
+                <TextView
+                    android:id="@+id/speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="下载速度: 100 kb/s"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/dimen_20" />
+
+            </RelativeLayout>
+
+            <com.mirror.util.down.view.RopeProgressBar
+                android:id="@+id/update_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:ropeMax="100" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lin_system_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:orientation="vertical">
+
+            <!--固件版本hao-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/update_text"
+                    android:text="本地固件版本号 :  " />
+
+                <TextView
+                    android:id="@+id/tv_current_systen_code"
+                    style="@style/update_text_desc" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/update_text"
+                    android:text="服务器版本号 :  " />
+
+                <TextView
+                    android:id="@+id/tv_system_web_code"
+                    style="@style/update_text_desc" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/update_text"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:text="版本描述    :  " />
+
+                <TextView
+                    android:id="@+id/tv_system_web_desc"
+                    style="@style/update_text_desc" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_system_update"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_fouces_style"
+                android:text="系统升级"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_25" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_no_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="当前没有升级提示，请期待下次升级"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_35"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:text="请先下载投屏客户端"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_25" />
+
+    <RelativeLayout
+        android:id="@+id/rela_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rect_circle_bordle3"
+        android:focusable="false"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 : 第一次使用本软件需要打开软件,进入程序内部走完引导页面
+                             \n\n2 : 安卓/苹果手机端下载在设备&apos;二维码&apos;扫描右侧二维码进行下载
+                             \n\n3 : 苹果设备IOS_9以上的版本 使用AirPlay扫描设备,进行连接同屏
+                             \n\n4 : AirPlay选项在苹果底部菜单,上滑方可显示"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_entry"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="@dimen/dimen_110"
+        android:layout_marginRight="@dimen/dimen_110"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_fouces_style"
+        android:text="点击进入"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</LinearLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rela_item_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="3dp">
+
+    <ImageView
+        android:id="@+id/iv_mian_item"
+        android:layout_width="190dp"
+        android:layout_height="78dp"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/ic_launcher" />
+
+
+</RelativeLayout>
