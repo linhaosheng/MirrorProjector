@@ -8,7 +8,7 @@ import android.widget.SeekBar
  */
 interface SplashActivityView {
 
-    val surfaceView: SurfaceView
+    fun getSurFaceView(): SurfaceView
 
-    val seekBar: SeekBar
+    fun getSeekBar(): SeekBar
 }

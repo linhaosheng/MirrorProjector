@@ -5,4 +5,8 @@ package com.mirroproject.activity
  */
 class LoginActivity : BaseActivity() {
 
+    companion object {
+        val LOGIN_SUCCESS = 0
+        val LOGIN_FAILED = LOGIN_SUCCESS + 1
+    }
 }

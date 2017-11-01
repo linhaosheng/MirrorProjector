@@ -57,6 +57,26 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activity.LoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+
+        <activity
+            android:name=".activity.main.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />
+
+        <activity
+            android:name=".activity.LauncherActivity"
+            android:launchMode="singleTask" />
+
+        <activity android:name=".activity.video.VideoPlayActivity" />
+
         <service android:name=".service.MirrorService" />
         <service android:name=".service.PopupService" />
     </application>

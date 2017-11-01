@@ -24,7 +24,7 @@ class NetWorkUtils {
             return false
         }
 
-        fun isWifiAvailable(context: Context): (Boolean) {
+        fun isWifiAvailable(context: Context): Boolean {
             if (context != null) {
                 val mConnectivityManager = context
                         .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

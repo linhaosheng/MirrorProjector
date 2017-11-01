@@ -7,9 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.media.AudioManager
-import android.os.Handler
 import android.os.IBinder
-import android.os.Message
 import android.text.TextUtils
 import android.util.Log
 import com.mirroproject.activity.LauncherActivity
@@ -17,24 +15,20 @@ import com.mirroproject.activity.LoginActivity
 import com.mirroproject.activity.main.MainActivity
 import com.mirroproject.activity.splash.SplashActivity
 import com.mirroproject.activity.video.VideoPlayActivity
+import com.mirroproject.adapter.VideoViewAdapter
 import com.mirroproject.app.MirrorApplication
-import com.mirroproject.app.MirrorApplication.Companion.instance1
 import com.mirroproject.config.AppInfo
 import com.mirroproject.entity.*
-import com.mirroproject.http.RetrofitFactory
-import com.mirroproject.http.RxJavaHelp
-import com.mirroproject.http.VideoInfoRetrofitFactory
+import com.mirroproject.http.*
+import com.mirroproject.runnable.*
 import com.mirroproject.runnable.TvDataLintener
-import com.mirroproject.runnable.VideoBackListener
 import com.mirroproject.util.*
 import com.mirroproject.view.MyToastView
 import com.mirroproject.view.WaitDialogUtil
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.annotations.NonNull
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import org.greenrobot.eventbus.EventBus
-import java.util.*
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 import javax.inject.Inject
@@ -44,7 +38,7 @@ import javax.inject.Inject
  */
 class MirrorService : Service(), VideoBackListener, TvDataLintener {
     val TAG = "MirrorService"
-    internal var executor = Executors.newFixedThreadPool(10)
+    var executor = Executors.newFixedThreadPool(10)
     val KEYCODE_HOME = "com.ys.keyevent_home"
     val KEYCODE_OPEN = "com.ys.keyevent_power"
     val BOOT_OPEN = "android.intent.action.BOOT_COMPLETED"
@@ -56,9 +50,9 @@ class MirrorService : Service(), VideoBackListener, TvDataLintener {
     private val SCREEN_ADV = 0x15
 
     @Inject
-    internal var retrofitFactory: RetrofitFactory? = null
+    var retrofitFactory: RetrofitFactory? = null
     @Inject
-    internal var videoInfoRetrofitFactory: VideoInfoRetrofitFactory? = null
+    var videoInfoRetrofitFactory: VideoInfoRetrofitFactory? = null
 
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -264,9 +258,8 @@ class MirrorService : Service(), VideoBackListener, TvDataLintener {
      * 文件保存SD卡的地址
      */
     fun downFile(isDelFile: Boolean, downUrl: String, saveUrl: String) {
-        val runnable = DownRunnable(downUrl, saveUrl, object : DownStateListener() {
-            fun downStateInfo(entity: DownFileEntity) {
-
+        val runnable = DownRunnable(downUrl, saveUrl, object : DownStateListener {
+            override fun downStateInfo(entity: DownFileEntity) {
             }
         })
         runnable.setIsDelFile(isDelFile)  //删除源文件
