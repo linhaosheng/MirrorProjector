@@ -43,7 +43,7 @@ class SplashActivity : BaseActivity(), SplashActivityView {
     @Inject
     internal var splashActivityHelp: SplashActivityHelp? = null
 
-    private var handler: Handler? = object : Handler() {
+    private var handler: Handler = object : Handler() {
         override fun handleMessage(msg: Message) {
             when (msg.what) {
                 LOAD_VIDEO -> splashActivityHelp!!.loadVideo()
@@ -58,7 +58,7 @@ class SplashActivity : BaseActivity(), SplashActivityView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         ButterKnife.bind(this)
-        DaggerSplashActivityComponent.builder().splashActivityModule(SplashActivityModule(this, handler)).appModule(AppModule(this)).build().inject(this)
+        //DaggerSplashActivityComponent.builder().splashActivityModule(SplashActivityModule(this, handler)).appModule(AppModule(this)).build().inject(this)
         EventBus.getDefault().register(this)
         handler!!.sendEmptyMessageDelayed(LOAD_VIDEO, 2000)
         handler!!.sendEmptyMessageDelayed(DELAY_LOGIN, 4000)
@@ -105,7 +105,6 @@ class SplashActivity : BaseActivity(), SplashActivityView {
         if (handler != null) {
             handler!!.removeMessages(LoginActivity.LOGIN_SUCCESS)
             handler!!.removeMessages(LoginActivity.LOGIN_FAILED)
-            handler = null
         }
     }
 

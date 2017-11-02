@@ -98,10 +98,10 @@ class SplashActivityHelp {
             if (mediaPlayer != null) {
                 val videoWidth = mediaPlayer!!.getVideoWidth()
                 val videoHeight = mediaPlayer!!.getVideoHeight()
-                val layoutParams = splashActivityView.surfaceView.getLayoutParams() as LinearLayout.LayoutParams
+                val layoutParams = splashActivityView.getSurFaceView().getLayoutParams() as LinearLayout.LayoutParams
                 layoutParams.width = videoWidth
                 layoutParams.height = videoHeight
-                splashActivityView.surfaceView.setLayoutParams(layoutParams)
+                splashActivityView.getSurFaceView().setLayoutParams(layoutParams)
                 Log.i(TAG, "end=====$videoWidth====height$videoHeight")
             }
         }

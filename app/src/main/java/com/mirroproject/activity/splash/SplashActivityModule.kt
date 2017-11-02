@@ -1,11 +1,11 @@
 package com.mirroproject.activity.splash
 
+import android.os.Handler
 import com.mirroproject.http.RetrofitFactory
 import com.mirroproject.util.PlayerUtil
 import dagger.Module
 import dagger.Provides
 import kotlinx.android.synthetic.main.activity_splash.*
-import java.util.logging.Handler
 import javax.inject.Singleton
 
 /**
