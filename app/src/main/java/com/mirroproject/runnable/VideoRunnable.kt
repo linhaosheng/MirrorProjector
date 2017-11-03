@@ -16,6 +16,10 @@ class VideoRunnable(internal var subchannel_id: Int, var retrofitFactory: VideoI
 
     //        http://api.magicmirrormedia.cn/mirr/apiv1/channel/videolist/subchannel_id/33/token/dd8330d507ef17adfabb79aff120db09/orderby/new/start_pos/1/list_num/200
 
+    companion object {
+        val TAG = "MirrorService"
+    }
+
     override fun run() {
         val token = SharedPerManager.getToken()
         getDatas(retrofitFactory, subchannel_id, token)
@@ -39,10 +43,5 @@ class VideoRunnable(internal var subchannel_id: Int, var retrofitFactory: VideoI
                         saveAppList(videoEntity.data)
                     }
                 }) { throwable -> Log.e(TAG, "getDatas error===" + throwable.message) }
-    }
-
-    companion object {
-
-        val TAG = "MirrorService"
     }
 }

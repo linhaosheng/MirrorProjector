@@ -18,7 +18,7 @@ import javax.inject.Singleton
  */
 @Module
 class AppModule {
-    internal var activity: Context
+    var activity: Context
 
     constructor(activity: Context) {
         this.activity = activity

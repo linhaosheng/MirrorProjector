@@ -17,7 +17,7 @@ import java.util.HashMap
  */
 class MirrorApplication : Application() {
 
-    private var mSharedPreferences: SharedPreferences? = null
+    var mSharedPreferences: SharedPreferences? = null
     var USER_INFO = "userInfo"
     var list_hair1: List<VideoEntity.DataBean>? = null
     var list_finger1: List<VideoEntity.DataBean>? = null
@@ -25,7 +25,7 @@ class MirrorApplication : Application() {
     var list_anim1: List<VideoEntity.DataBean>? = null
     var tvAbroadInfos1: List<ItemTv>? = null//封装直播的集合
     var liveEntityList1: List<LiveEntity>? = null
-    private var context: Context? = null
+    lateinit var context1: Context
     var video_advs1: HashMap<String, String>? = null
     var pos_31: List<ADInfo.Pos3Bean> = ArrayList()
     var infos1: List<ADInfo.Pos1Bean> = ArrayList()
@@ -42,7 +42,7 @@ class MirrorApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance1 = this
-        context = applicationContext
+        context1 = applicationContext
         mSharedPreferences = getSharedPreferences(USER_INFO, Context.MODE_PRIVATE)
         initOther()
     }
@@ -72,10 +72,10 @@ class MirrorApplication : Application() {
     }
 
     fun getContext(): Context? {
-        return context
+        return context1
     }
 
-    private fun initOther() {
+    fun initOther() {
         FileUtil.creatDirPathNoExists()
         //列表封装
         list_hair1 = ArrayList()

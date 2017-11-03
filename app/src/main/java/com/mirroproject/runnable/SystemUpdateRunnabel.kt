@@ -17,7 +17,7 @@ import org.greenrobot.eventbus.EventBus
 class SystemUpdateRunnabel(internal var requestUrl: String) : Runnable, RequeatListener {
 
     lateinit var listener: RequeatListener
-    internal var myOkHttpUtil: MyOkHttpUtil
+    lateinit var myOkHttpUtil: MyOkHttpUtil
 
     init {
         myOkHttpUtil = MyOkHttpUtil(requestUrl)

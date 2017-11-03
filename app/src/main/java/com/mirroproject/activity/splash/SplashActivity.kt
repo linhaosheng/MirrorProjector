@@ -9,12 +9,12 @@ import android.view.SurfaceView
 import android.widget.SeekBar
 import butterknife.BindView
 import butterknife.ButterKnife
-import com.lidroid.xutils.http.client.HttpRequest
 import com.mirroproject.activity.BaseActivity
 import com.mirroproject.R
 import com.mirroproject.activity.LoginActivity
 import com.mirroproject.app.AppModule
 import com.mirroproject.entity.EventType
+import com.mirroproject.http.HttpRequest
 import com.mirroproject.http.RetrofitFactory
 import com.mirroproject.service.MirrorService
 import com.mirroproject.view.WaitDialogUtil
@@ -30,20 +30,13 @@ import javax.inject.Inject
 class SplashActivity : BaseActivity(), SplashActivityView {
 
     val TAG = "SplashActivity"
-    @BindView(R.id.activity_play)
     private val LOAD_VIDEO = 0x11
     private val DELAY_LOGIN = 0x12
 
     @Inject
-    internal var retrofitFactory: RetrofitFactory? = null
-    @Inject
-    internal var waitDialogUtil: WaitDialogUtil? = null
-    @Inject
-    internal var httpRequest: HttpRequest? = null
-    @Inject
-    internal var splashActivityHelp: SplashActivityHelp? = null
+    lateinit var splashActivityHelp: SplashActivityHelp
 
-    private var handler: Handler = object : Handler() {
+    var handler: Handler = object : Handler() {
         override fun handleMessage(msg: Message) {
             when (msg.what) {
                 LOAD_VIDEO -> splashActivityHelp!!.loadVideo()
@@ -58,19 +51,17 @@ class SplashActivity : BaseActivity(), SplashActivityView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         ButterKnife.bind(this)
-        //DaggerSplashActivityComponent.builder().splashActivityModule(SplashActivityModule(this, handler)).appModule(AppModule(this)).build().inject(this)
+        DaggerSplashActivityComponent.builder().splashActivityModule(SplashActivityModule(this, handler)).appModule(AppModule(this)).build().inject(this)
         EventBus.getDefault().register(this)
         handler!!.sendEmptyMessageDelayed(LOAD_VIDEO, 2000)
         handler!!.sendEmptyMessageDelayed(DELAY_LOGIN, 4000)
         startService(Intent(this@SplashActivity, MirrorService::class.java))
     }
 
-
     override fun onResume() {
         super.onResume()
         splashActivityHelp!!.deleteAndGetData()
     }
-
 
     override fun onPause() {
         super.onPause()

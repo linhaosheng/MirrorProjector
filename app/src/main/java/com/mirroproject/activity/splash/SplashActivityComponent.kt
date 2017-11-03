@@ -10,7 +10,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(SplashActivityModule::class, AppModule::class))
 interface SplashActivityComponent {
-    abstract fun inject(splashActivityHelp: SplashActivityHelp)
+    fun inject(splashActivityHelp: SplashActivityHelp)
 
-    abstract fun inject(splashActivity: SplashActivity)
+    fun inject(splashActivity: SplashActivity)
 }

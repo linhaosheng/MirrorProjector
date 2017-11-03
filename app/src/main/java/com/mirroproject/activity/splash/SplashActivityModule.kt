@@ -23,6 +23,11 @@ class SplashActivityModule {
     }
 
     @Provides
+    fun providerSplashActivityHelp(): SplashActivityHelp {
+        return SplashActivityHelp(splashActivity, handler)
+    }
+
+    @Provides
     @Singleton
     fun providerSplashActivityBussin(retrofitFactory: RetrofitFactory): SplashActivityBussin {
         return SplashActivityBussin(retrofitFactory)

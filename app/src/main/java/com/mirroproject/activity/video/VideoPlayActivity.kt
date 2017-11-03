@@ -16,5 +16,6 @@ class VideoPlayActivity : BaseActivity() {
         val VIDEO_ADV_ID = "VIDEO_ADV_ID"
         val VIDEO_ADV_Time = "VIDEO_ADV_TIME"
         val VIDEO_ADV_TITLE = "VIDEO_ADV_TITLE"
+        var isPlayTv = false
     }
 }

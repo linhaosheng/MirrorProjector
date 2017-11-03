@@ -126,12 +126,12 @@
         android:background="#A46CC7"
         android:padding="@dimen/dimen_5">
 
-       <!-- <fragment
+        <fragment
             android:id="@+id/fragment_cycle_viewpager_content"
-            android:name="com.mirror.view.ad.CycleViewPager"
+            android:name="com.mirroproject.view.ad.CycleViewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:focusable="false" />-->
+            android:focusable="false" />
     </LinearLayout>
 
 </LinearLayout>

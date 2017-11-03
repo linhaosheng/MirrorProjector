@@ -15,10 +15,10 @@ import org.greenrobot.eventbus.EventBus
 /***
  * 网络请求模板
  */
-class AppUpdateRunnable(internal var requestUrl: String) : Runnable, RequeatListener {
+class AppUpdateRunnable(var requestUrl: String) : Runnable, RequeatListener {
 
-    internal var listener: RequeatListener? = null
-    internal var myOkHttpUtil: MyOkHttpUtil
+    lateinit var listener: RequeatListener
+    lateinit var myOkHttpUtil: MyOkHttpUtil
 
     init {
         myOkHttpUtil = MyOkHttpUtil(requestUrl)
@@ -42,6 +42,5 @@ class AppUpdateRunnable(internal var requestUrl: String) : Runnable, RequeatList
         Log.e("HttpGetRunnable", "===网络请求失败=" + errorDesc)
         //              (int appversion, String updatedesc, String apkurl, String webversion)
         val updateInfo = UpdateInfo(-1, errorDesc, "", "1")
-
     }
 }

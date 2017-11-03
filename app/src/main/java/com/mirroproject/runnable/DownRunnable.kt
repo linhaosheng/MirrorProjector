@@ -16,10 +16,10 @@ import java.io.File
 
 class DownRunnable(var downUrl: String, var saveUrl: String, var listener: DownStateListener) : Runnable {
 
-    private var httHhandler: HttpHandler<File>? = null
-    internal var httpUtils: HttpUtils? = null
-    internal var downSum: Long = 0
-    internal var isFalse = false
+    lateinit var httHhandler: HttpHandler<File>
+    lateinit var httpUtils: HttpUtils
+    var downSum: Long = 0
+    var isFalse = false
 
     private val handler = Handler()
 
@@ -97,7 +97,7 @@ class DownRunnable(var downUrl: String, var saveUrl: String, var listener: DownS
 
     }
 
-    private fun backState(state: String, downState: Int, progress: Int, b: Boolean, downUrl: String, saveUrl: String, speed: Int) {
+     fun backState(state: String, downState: Int, progress: Int, b: Boolean, downUrl: String, saveUrl: String, speed: Int) {
         val entity = DownFileEntity(downState, progress, b, state, downUrl, saveUrl, speed)
         listener.downStateInfo(entity)
     }

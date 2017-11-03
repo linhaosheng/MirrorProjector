@@ -18,7 +18,6 @@ abstract class BaseActivity : Activity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         ActivityCollector.addActivity(this)
-
     }
 
     override fun onResume() {

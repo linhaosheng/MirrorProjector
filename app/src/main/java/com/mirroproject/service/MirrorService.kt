@@ -50,11 +50,25 @@ class MirrorService : Service(), VideoBackListener, TvDataLintener {
     private val SCREEN_ADV = 0x15
 
     @Inject
-    var retrofitFactory: RetrofitFactory? = null
+    lateinit var retrofitFactory: RetrofitFactory
     @Inject
-    var videoInfoRetrofitFactory: VideoInfoRetrofitFactory? = null
+    lateinit var videoInfoRetrofitFactory: VideoInfoRetrofitFactory
 
-    private val receiver = object : BroadcastReceiver() {
+    companion object {
+        lateinit var instance1: MirrorService
+        fun getInstance(): MirrorService {
+            if (instance1 == null) {
+                synchronized(MirrorService::class.java) {
+                    if (instance1 == null) {
+                        instance1 = MirrorService()
+                    }
+                }
+            }
+            return instance1
+        }
+    }
+
+    val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             val action = intent.action
             if (action == KEYCODE_HOME) {
@@ -97,7 +111,7 @@ class MirrorService : Service(), VideoBackListener, TvDataLintener {
         }
     }
 
-    internal var mAudioManager: AudioManager? = null
+    lateinit var mAudioManager: AudioManager
 
     private fun setVoluem() {
         if (mAudioManager == null) {
@@ -112,21 +126,6 @@ class MirrorService : Service(), VideoBackListener, TvDataLintener {
             MyToastView.getInstances().Toast(this@MirrorService, "声音太大会影响到其他的客户哦！")
         }
     }
-
-    companion object {
-        lateinit var instance1: MirrorService
-        fun getInstance(): MirrorService {
-            if (instance1 == null) {
-                synchronized(MirrorService::class.java) {
-                    if (instance1 == null) {
-                        instance1 = MirrorService()
-                    }
-                }
-            }
-            return instance1
-        }
-    }
-
 
     override fun onCreate() {
         super.onCreate()

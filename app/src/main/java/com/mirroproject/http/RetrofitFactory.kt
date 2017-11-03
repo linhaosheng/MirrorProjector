@@ -15,9 +15,7 @@ import java.util.concurrent.TimeUnit
  */
 class RetrofitFactory {
 
-
     lateinit var httpRequestData: HttpRequestData
-
 
     constructor() {
         var retrofit: Retrofit = Retrofit.Builder()
@@ -41,6 +39,6 @@ class RetrofitFactory {
     }
 
     fun providerHttpRequestData(): HttpRequestData {
-        return httpRequestData;
+        return httpRequestData
     }
 }

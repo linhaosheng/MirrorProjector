@@ -9,7 +9,11 @@ import java.util.concurrent.TimeUnit
  * Created by reeman on 2017/10/31.
  */
 class MyOkHttpUtil(internal var requestUrl: String) {
-    internal var mOkHttpClient: OkHttpClient? = null
+    lateinit var mOkHttpClient: OkHttpClient
+
+    companion object {
+        val TAG = "MyOkHttpUtil"
+    }
 
     fun setRequestUrl(url: String) {
         this.requestUrl = url
@@ -42,14 +46,5 @@ class MyOkHttpUtil(internal var requestUrl: String) {
             Log.i(TAG, "===网络请求异常==" + e.toString())
             listener.requestFailed(e.toString())
         }
-
     }
-
-    companion object {
-
-
-        val TAG = "MyOkHttpUtil"
-    }
-
-
 }

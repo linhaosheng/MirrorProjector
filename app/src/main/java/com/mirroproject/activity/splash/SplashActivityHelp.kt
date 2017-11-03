@@ -5,13 +5,13 @@ import android.net.Uri
 import android.os.Handler
 import android.util.Log
 import android.widget.LinearLayout
-import com.lidroid.xutils.http.client.HttpRequest
 import com.mirroproject.R
 import com.mirroproject.activity.LoginActivity
 import com.mirroproject.activity.main.MainActivity
 import com.mirroproject.app.MirrorApplication
 import com.mirroproject.config.AppInfo
 import com.mirroproject.entity.EventType
+import com.mirroproject.http.HttpRequest
 import com.mirroproject.http.RetrofitFactory
 import com.mirroproject.service.MirrorService
 import com.mirroproject.service.PopupService
@@ -31,15 +31,15 @@ class SplashActivityHelp {
     var splashActivity: SplashActivity
     var splashActivityView: SplashActivityView
     @Inject
-    var splashActivityBussin: SplashActivityBussin? = null
+    lateinit var splashActivityBussin: SplashActivityBussin
     @Inject
-    var retrofitFactory: RetrofitFactory? = null
+    lateinit var retrofitFactory: RetrofitFactory
     @Inject
-    var player: PlayerUtil? = null
+    lateinit var player: PlayerUtil
     @Inject
-    var waitDialogUtil: WaitDialogUtil? = null
+    lateinit var waitDialogUtil: WaitDialogUtil
     @Inject
-    var httpRequest: HttpRequest? = null
+    lateinit var httpRequest: HttpRequest
 
     var handler: Handler? = null
 
@@ -122,7 +122,6 @@ class SplashActivityHelp {
     fun onPause() {
         if (player != null) {
             player!!.stop()
-            player = null
         }
         if (waitDialogUtil != null) {
             waitDialogUtil!!.dismiss()

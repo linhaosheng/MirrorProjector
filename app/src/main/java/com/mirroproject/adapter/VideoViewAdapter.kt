@@ -36,7 +36,7 @@ import com.mirroproject.view.MyBitmapImageViewTarget
 class VideoViewAdapter(private val mContext: Context, private var data: List<VideoEntity.DataBean>) : RecyclerView.Adapter<VideoViewAdapter.Holder>() {
 
     lateinit var mOnItemClickListener: OnItemClickListener
-    private var mOnItemKeyListener: OnItemKeyListener? = null
+    lateinit var mOnItemKeyListener: OnItemKeyListener
 
     companion object {
         val TAG = VideoViewAdapter::class.java.simpleName
