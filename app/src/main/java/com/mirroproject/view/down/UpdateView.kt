@@ -14,34 +14,34 @@ import com.mirroproject.view.RopeProgressBar
  */
 interface UpdateView {
 
-    val systemCurrentCode: TextView  //获取本地服务器控
+    fun getSystemCurrentCode(): TextView  //获取本地服务器控
 
-    val systemWebCode: TextView      //获取服务器版本控件
+    fun getSystemWebCode(): TextView      //获取服务器版本控件
 
-    val systemWebDesc: TextView     //获取服务器版本升级描述
+    fun getSystemWebDesc(): TextView     //获取服务器版本升级描述
 
-    val btnSysUpdate: Button        //获取系统按控件
+    fun getBtnSysUpdate(): Button        //获取系统按控件
 
-    val progressBar: RopeProgressBar  //进度条控件
+    fun getProgressBar(): RopeProgressBar  //进度条控件
 
-    val speedTv: TextView          //获取下载速度控件
+    fun getSpeedTv(): TextView          //获取下载速度控件
 
-    val downStateTv: TextView    //获取下载的状态控件
+    fun getDownStateTv(): TextView    //获取下载的状态控件
 
     //====================================================
-    val localCurrenCode: TextView   //软件升级，本地显示版本号
+    fun getLocalCurrenCode(): TextView   //软件升级，本地显示版本号
 
-    val localWebCode: TextView       //软件升级，服务器版本号
+    fun getLocalWebCode(): TextView       //软件升级，服务器版本号
 
-    val localWebDesc: TextView       //软件升级，升级提示
+    fun getLocalWebDesc(): TextView       //软件升级，升级提示
 
-    val updateAppBtn: Button          //软件升级Btn
+    fun getUpdateAppBtn(): Button          //软件升级Btn
 
-    val linSoftlayout: LinearLayout    //软件布局
+    fun getLinSoftlayout(): LinearLayout    //软件布局
 
-    val linSyslayout: LinearLayout   //系统升级布局
+    fun getLinSyslayout(): LinearLayout   //系统升级布局
 
-    val noUpdateText: TextView   //系统升级布局
+    fun getNoUpdateText(): TextView   //系统升级布局
 
     /***
      * 用来通知主界面的UI更新

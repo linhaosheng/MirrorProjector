@@ -117,8 +117,7 @@ class MainActivityHelp(val mainActivity: MainActivity, var handler: Handler, val
      */
     fun updateSystem(systemUpdateInfo: SystemUpdateInfo) {
         val currentSysCode = Build.VERSION.INCREMENTAL.trim { it <= ' ' }.trim { it <= ' ' }
-        val webCode = systemUpdateInfo.systemcode ?: //错误的返回信息也会从这里返回来，这里加一个标记
-                return
+        val webCode = systemUpdateInfo.systemcode //错误的返回信息也会从这里返回来，这里加一个标记
         if (currentSysCode != webCode) {
             systemDialog.show("当前检测到新系统软件，是否前去升级 ?", UpdateView.TAG_SYSTEM_UPDATE)
         }

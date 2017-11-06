@@ -16,6 +16,8 @@ import com.mirroproject.activity.main.MainActivity
 import com.mirroproject.activity.splash.SplashActivity
 import com.mirroproject.activity.video.VideoPlayActivity
 import com.mirroproject.adapter.VideoViewAdapter
+import com.mirroproject.app.AppModule
+import com.mirroproject.app.DaggerAppComponent
 import com.mirroproject.app.MirrorApplication
 import com.mirroproject.config.AppInfo
 import com.mirroproject.entity.*
@@ -131,7 +133,7 @@ class MirrorService : Service(), VideoBackListener, TvDataLintener {
         super.onCreate()
         instance1 = this
         Log.i(TAG, "======启动服务MirrorService")
-        // DaggerAppComponent.builder().appModule(AppModule(MirrorApplication.getInstance())).build().inject(this)
+        DaggerAppComponent.builder().appModule(AppModule(MirrorApplication.getInstance())).build().inject(this)
         getMainInfo()
         initReceiver()
     }
